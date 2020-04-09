@@ -103,7 +103,9 @@ func VerboseWriter(w io.Writer) Option {
 
 func WorkDir(path string) Option {
 	return func (e *GExpect) Option {
+		prev := e.cmd.Dir
 		e.cmd.Dir = path
+		return WorkDir(prev)
 	}
 }
 
