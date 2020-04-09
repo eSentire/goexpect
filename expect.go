@@ -101,6 +101,12 @@ func VerboseWriter(w io.Writer) Option {
 	}
 }
 
+func WorkDir(path string) Option {
+	return func (e *GExpect) Option {
+		e.cmd.Dir = path
+	}
+}
+
 // Tee duplicates all of the spawned process's output to the given writer and
 // closes the writer when complete. Writes occur from another thread, so
 // synchronization may be necessary.
